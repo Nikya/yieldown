@@ -1,0 +1,88 @@
+<?php
+require_once('Formater.php');
+require_once('DataLoader.php');
+require_once('vendors/erusev/parsedown/Parsedown.php');
+
+/**
+* The Core class of Yieldown Engine.
+*
+* @author nikya
+* @date Creation 2016-07-14
+*/
+class Yieldown {
+
+	/** Yieldown version name*/
+	const VERSION = "1.0";
+
+	/**
+	* Load a text from data folder
+	*
+	* @param String $id Data id to load (File name)
+	* @param Boolean $toFormat [optional default true] To format readed text
+	* @return String Loaded data
+	*/
+	public static function loadtext($id, $toFormat=true) {
+		$text = DataLoader::loadText($id);
+
+		if ($toFormat)
+			$text = Formater::formatText($text);
+
+		return $text;
+	}
+
+	/**
+	* Load data from list (Json file)
+	*
+	* @param String $id Data id to load (File name)
+	* @param Boolean $toFormat [optional : default true] To format readed text
+	* @return String Loaded data
+	*/
+	public static function loadCollection($id, $keyToFormatList = null) {
+		$list = DataLoader::loadArray($id);
+
+		if ($keyToFormatList != null) {
+			$list = Formater::formatArray($list);
+		}
+
+		return $list;
+	}
+
+	/**
+	* Enable staticallize process when your website is ready.
+	* Call this fucntion at begining of each page to generate. Must finish with finalize function call.
+	*
+	* @param type $enable To enable the process
+	* @param type $fileName [optional : default use the current php file name] To specify the corresponding static file name
+	*/
+	public static function staticallize($enable = false) {
+		Statiker::$processEnable = $enable;
+
+		if (Statiker::$processEnable) {
+			ob_start();
+		}
+	}
+
+	/** Must be call at the end of each page to get corresponding static page*/
+	public static function finalize() {
+		Statiker::traceDynamicMode();
+
+		if (Statiker::$processEnable) {
+
+			// Get and stop outputbuffering
+			$pageContent = ob_get_contents();
+			ob_end_clean();
+
+			// Writter catched buffer in static file
+			$currentStaticFileName = Statiker::buildCurrentStaticFileName();
+			$staticFile = fopen('./statikOut/'.$currentStaticFileName, "w");
+
+			if ($staticFile !== false) {
+				fputs($staticFile, $pageContent);
+				fclose($staticFile);
+				echo $pageContent;
+			} else {
+				echo "Can't generate static file : " . $currentStaticFileName;
+			}
+		}
+	}
+}
