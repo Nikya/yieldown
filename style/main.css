@@ -91,6 +91,15 @@ dd {
 	text-align: justify;
 }
 
+.blogArticleHead {
+	border-bottom: 3px dashed #AAA;
+}
+
+.blogArticleContent h1 {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
 /* Yieldown special
 ------------------------------------------------------------------------------*/
 .mykeyword {

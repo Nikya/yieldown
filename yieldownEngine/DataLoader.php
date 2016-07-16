@@ -54,4 +54,29 @@ class DataLoader {
 		else
 			throw new Exception("Can't decode data '$fileId' into Json - " . json_last_error_msg());
 	}
+
+	/***************************************************************************
+	* Load all article
+	*
+	* @return array All article
+	*/
+	public static function loadBlog() {
+		$path = "./data/blog/";
+		$rawBlog = array();
+
+		$artFiles = scandir($path);
+
+		if ($artFiles===false)
+			throw new Exception("Can't read articles in $path");
+		else {
+			foreach ($artFiles as $file) {
+				if ($file!='.' and $file!='..') {
+					$fileContent = SELF::fileGetContents('article', $path.$file);
+					$rawBlog[$file] = $fileContent;
+				}
+			}
+		}
+
+		return $rawBlog;
+	}
 }

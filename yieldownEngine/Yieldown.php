@@ -48,6 +48,19 @@ class Yieldown {
 		return $collection;
 	}
 
+	/***************************************************************************
+	* Load all article into data/blog folder (Plain text markdown files)
+	*
+	* @return array(Article) All article
+	*/
+	public static function loadBlog() {
+		$rawBlog = DataLoader::loadBlog();
+
+		$blog = Formater::formatBlog($rawBlog);
+
+		return $blog;
+	}
+
 	/**
 	* Enable staticallize process when your website is ready.
 	* Call this fucntion at begining of each page to generate. Must finish with finalize function call.
