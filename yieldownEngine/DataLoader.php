@@ -1,69 +1,57 @@
 <?php
 
 /**
-* To read data from raw file.
+* To read data from file.
 *
 * @author nikya
 * @date Creation 2014-01-02
 */
 class DataLoader {
 
-	/** Load raw text data from text file
+	/***************************************************************************
+	* Read full file content
 	*
-	* @param String $fileId file Name without extention
+	* @param String $fileId file ID
+	* @param String $path File path
+	*
+	* @return string Readed file content
+	*/
+	private static function fileGetContents($fileId, $path) {
+		if (is_file($path))
+			return file_get_contents($path);
+		else
+			throw new Exception("Can't load data '$fileId' - File not exists : $path");
+	}
+
+	/***************************************************************************
+	* Load raw text data from text file
+	*
+	* @param String $fileId file name without extention
+	*
 	* @return string Readed data
 	*/
 	public static function loadText($fileId) {
-		$text = '';
+		$path = "./data/text/$fileId.md";
 
-		$fullFileName = './data/text/' . $fileId . '.md';
-
-		if (is_file($fullFileName)) {
-			$text = file_get_contents($fullFileName);
-		} else {
-			$text = "Unknow text data id '$fileId'. File not exist : $fullFileName";
-		}
-
-		return $text;
+		return SELF::fileGetContents($fileId, $path);
 	}
 
-	/** Load json data from .json file
+	/***************************************************************************
+	* Load a json data from text file
 	*
-	* @param String $fileId file Name without extention
-	* @return string Readed data in associative Array
-	*/
-	public static function loadArray($fileId) {
-		$array = array();
-
-		$fullFileName = './data/' . $fileId . '.json';
-
-		if (is_file($fullFileName)) {
-			$jsonStr = file_get_contents($fullFileName);
-			$array = json_decode($jsonStr, true);
-		} else {
-			$array = array("Unknow data id $fileId. File not exist in data folder : $fullFileName");
-		}
-
-		DataLoader::simplifyArray($fileId, $array);
-
-		return $array;
-	}
-
-	/** To simplify array, remove first associative value
-	* if there is the only one and if is the same than data id
+	* @param String $fileId file name without extention
 	*
-	* @param String $dataId Data Id
-	* @param type $array Array to simplify
+	* @return string Readed data
 	*/
-	private static function simplifyArray($dataId, &$array) {
-		// If the json convertion return onlyone sub array
-		if (count($array)==1);{
-			// If this sub array get the same name than data id
-			if (array_key_exists ($dataId, $array)) {
-				// Array can be simplify
-				$array = $array[$dataId];
-			}
-		}
-	}
+	public static function loadCollection($fileId) {
+		$path = "./data/collection/$fileId.json";
 
+		$fileContent = SELF::fileGetContents($fileId, $path);
+
+		$collection = json_decode($fileContent);
+		if (json_last_error() === JSON_ERROR_NONE)
+			return $collection;
+		else
+			throw new Exception("Can't decode data '$fileId' into Json - " . json_last_error_msg());
+	}
 }

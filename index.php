@@ -6,6 +6,9 @@
 	require_once("yieldownEngine/Yieldown.php");
 
 	$target='home';
+	if (isset($_GET['p']) and !empty($_GET['p']) )
+		$target=$_GET['p'];
+
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +30,10 @@
 
 	<nav>
 		<a href=".">Accueil</a>
-		<a href="/">Blog</a>
-		<a href="/">Historique</a>
-		<a href="/">Types de tons</a>
-		<a href="/">Types de coupes</a>
+		<a href="?p=blog">Blog</a>
+		<a href="?p=history">Historique</a>
+		<a href="?p=tone">Types de tons</a>
+		<a href="?p=cut">Types de coupes</a>
 	</nav>
 
 	<section> <!-- CONTENT -->

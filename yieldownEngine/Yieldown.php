@@ -14,15 +14,16 @@ class Yieldown {
 	/** Yieldown version name*/
 	const VERSION = "1.0";
 
-	/**
-	* Load a text from data folder
+	/***************************************************************************
+	* Load a text from data/text folder (A plain text markdown file)
 	*
-	* @param String $id Data id to load (File name)
+	* @param String $fileId File id to load (File name without extention)
 	* @param Boolean $toFormat [optional default true] To format readed text
-	* @return String Loaded data
+	*
+	* @return String Readed data
 	*/
-	public static function loadtext($id, $toFormat=true) {
-		$text = DataLoader::loadText($id);
+	public static function loadtext($fileId, $toFormat=true) {
+		$text = DataLoader::loadText($fileId);
 
 		if ($toFormat)
 			$text = Formater::formatText($text);
@@ -30,21 +31,21 @@ class Yieldown {
 		return $text;
 	}
 
-	/**
-	* Load data from list (Json file)
+	/***************************************************************************
+	* Load a collection from data/collection folder (A json file)
 	*
-	* @param String $id Data id to load (File name)
-	* @param Boolean $toFormat [optional : default true] To format readed text
-	* @return String Loaded data
+	* @param String $fileId File id to load (File name without extention)
+	* @param array $keyToFormatList [optional] Json label list which apply formatting
+	*
+	* @return object(stdClass) Readed data
 	*/
-	public static function loadCollection($id, $keyToFormatList = null) {
-		$list = DataLoader::loadArray($id);
+	public static function loadCollection($fileId, $keyToFormatList = null) {
+		$collection = DataLoader::loadCollection($fileId);
 
-		if ($keyToFormatList != null) {
-			$list = Formater::formatArray($list);
-		}
+		if ($keyToFormatList != null)
+			$collection = Formater::formatCollection($collection, $keyToFormatList);
 
-		return $list;
+		return $collection;
 	}
 
 	/**

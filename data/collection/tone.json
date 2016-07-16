@@ -1,0 +1,42 @@
+[
+	{
+		"type": "Acid washed",
+		"desc": "Le tissu est d'une couleur unie avec **des taches** réparties, semblables à un passage sous *javel*"
+	},
+	{
+		"type": "Black",
+		"desc": "Le fil *indigo* est remplacé par un fil **noir**"
+	},
+	{
+		"type": "Bleached",
+		"desc": "**Blanchi** avec des agent de blanchiment"
+	},
+	{
+		"type": "Brut",
+		"desc": "A l'état **naturel** tel que sortant de la chaine de fabrication"
+	},
+	{
+		"type": "Stone washed",
+		"desc": "*Délavage* avec des pierres ponces, mise au point dans les années 1980"
+	},
+	{
+		"type": "Stone bleached",
+		"desc": "*Délavage* avec des pierres ponces et enzymes de blanchiment"
+	},
+	{
+		"type": "Surteint",
+		"desc": "Originellement [[mykeyword]Jean] bleu *teint* en noir, se pratique désormais avec pratiquement toutes les couleurs en surteinte"
+	},
+	{
+		"type": "Used",
+		"desc": "[[mykeyword]Jean] **vieilli** par sablage (technique désormais interdite)"
+	},
+	{
+		"type": "Bio",
+		"desc": "[[mykeyword]Jean] en **coton biologique**"
+	},
+	{
+		"type": "Éthique",
+		"desc": "[[mykeyword]Jean] fabriqué selon les normes du **commerce équitable**"
+	}
+]

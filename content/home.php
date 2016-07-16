@@ -1,5 +1,5 @@
 <?php
 	$content = Yieldown::loadText('home', true);
 
-	echo $content;
+	echo "<article>$content</article>";
 ?>

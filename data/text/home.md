@@ -22,3 +22,5 @@ Les jeans de production *Levi Strauss & Co.* des premiers temps conservent les a
 * poche à outil latérale sur certains modèles...
 
 Selon certaines sources, la présence d'une *poche* et d'une poche arrière sur un jeans aurait pour origine le fait que *Jacob Davis* soit d'abord un tailleur, confectionnant notamment des pantalons plus habillés. Il aurait utilisé un tel modèle pour la création de son premier pantalon de travail riveté.
+
+![Jean mode 2010](data/aside/512px-Jeans_for_men.jpg "Jean mode à faux plis en 2010")

@@ -1,0 +1,30 @@
+[
+  {
+    "type": "Droit",
+    "description": "Appelé aussi *cigarette* : il a la même largeur de la cuisse à la cheville. Unisexe."
+  },
+  {
+    "type": "Slim",
+    "description": "('mince' en anglais): il est ajusté aux cuisses et serré aux chevilles. Très populaire dans les années 2010, particulièrement auprès des femmes et encore plus des adolescentes."
+  },
+  {
+    "type": "Skinny",
+    "description": "('mince, maigre' en anglais) : un peu comme le slim, il est serré aux cuisses et très serré aux chevilles."
+  },
+  {
+    "type": "Flare",
+    "description": "Surnommé *patte d'eph* : droit ou large aux cuisses et très large et évasé aux chevilles. Il était très populaire dans les années 1960, à l'époque des Hippies."
+  },
+  {
+    "type": "Bootcut",
+    "description": "Plus féminin que le flare, il est serré aux cuisses et un peu évasé aux chevilles. Il est fait pour être porté avec des bottes (boots = 'bottes' en anglais), ce qui en fait une coupe féminine."
+  },
+  {
+    "type": "Boyfriend",
+    "description": "Coupe masculine mais porté par des femmes (boyfriend = 'petit ami' en anglais), il est plutôt large des cuisses aux chevilles, très souvent usé, déchiré et délavé. Il se porte en général roulotté (ourlets) pour le raccourcir et montrer la cheville."
+  },
+  {
+    "type": "Baggy",
+    "description": "A taille basse, le plus souvent réalisé en coupe droite au confort très large des hanches jusqu'au bas de pantalon. Cette coupe serait née dans les prisons américaines où les détenus portaient les mêmes tenues rayées que les victimes des *camps de concentration*. Les autorités carcérales décident alors après la *Seconde Guerre mondiale* de changer leurs pantalons rayés pour des [[mykeyword]Jeans] larges et sans ceinture."
+  }
+]
