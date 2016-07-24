@@ -3,7 +3,7 @@
 ### 2016-07-14 12:44
 #### Acheter des jeans déjà déchirés peut couter cher. Mais, bonne nouvelle ! C'est facile de déchirer les vôtres. En suivant les bonnes étapes, avec le bon matériel et de la patience, vous pouvez rapidement et facilement déchirer vos jeans.
 
-![Jean mode 2010](data/aside/512px-Jeans_for_men.jpg "Jean mode à faux plis en 2010")
+![Jean mode 2010](data/aside/comment_dechirer_vos_propres_jeans.jpg "Jean mode à faux plis en 2010")
 
 * mode
 * Jeans
@@ -19,7 +19,7 @@ Par Étapes
 Vous pouvez déchirer n'importe quel jean et obtenir le même résultat, mais ne vous sentez pas obligé d'en déchirer un que vous avez déjà puisque vous pouvez en trouver d'autres pas chers dans les friperies.
 
 * Utiliser un jean qui a déjà été un peu porté donnera de meilleurs résultats qu'un jean tout neuf, mais ne vous arrêtez pas à ça si vous voulez en acheter un nouveau pour ce projet.
-* Les jeans délavés de couleur claire sont généralement plus jolis lorsqu'ils sont déchirés, car leur couleur leur donne un look plus usé. Les jeans délavés plus foncés semblent trop fraichement teints pour être déchirés et ne feront pas aussi « réalistes ».
+* Les [[mykeyword]Jeans] délavés de couleur claire sont généralement plus jolis lorsqu'ils sont déchirés, car leur couleur leur donne un look plus usé. Les [[mykeyword]Jeans] délavés plus foncés semblent trop fraichement teints pour être déchirés et ne feront pas aussi « réalistes ».
 
 # 2 Rassemblez votre matériel.
 
@@ -71,6 +71,8 @@ Pour éviter que les trous deviennent plus grands, renforcez-les en cousant auto
 * Si vous voulez que le jean s'agrandisse au fil du temps, sautez cette étape.
 
 # 10 Sortez avec votre super jean !
+
+![Jeans déchiré](data/aside/comment_dechirer_vos_propres_jeans.jpg "La grande classe du Jeans déchiré")
 
 # Conseils
 1. Lavez le jean juste après l'avoir déchiré fera que les fibres s'assoupliront davantage et donnera un look encore plus délavé.

@@ -28,13 +28,13 @@ h2 {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: Times, serif;
-	margin-top: 5%;
-	margin-bottom: 3%;
+	margin-top: 3%;
+	margin-bottom: 1%;
 }
 
 a,
 a:visited{
-	color:#9FF;
+	color:#0066ff;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -67,13 +67,18 @@ section {
 	background-color: #FFFFFF;
 }
 
-.footer hr {
-	margin: 3%;
+footer a,
+footer a:visited {
+	color: #9FF;
 }
 
 nav, footer {
 	border-top: 6px dashed #e7a61a;
 }
+
+/*******************************************************************************
+* Listing
+*/
 
 dl {
 	margin-bottom: 3%;
@@ -91,17 +96,65 @@ dd {
 	text-align: justify;
 }
 
+/*******************************************************************************
+* Blog
+*/
+
+.blogSummary img{
+	max-width: 100px;
+	max-height : 80xp;
+	display: inline-block;
+}
+
+.blogSummary p{
+	display: inline-block;
+	width: 70%;
+}
+
 .blogArticleHead {
-	border-bottom: 3px dashed #AAA;
+	background-color: rgba(240, 240, 240, 0.6);
+	padding: 3%;
+}
+
+.blogArticleHeadOut h1 {
+	font-size: 1.7em;
+}
+
+.blogArticleHeadOut h3 {
+	font-size: 1.6em;
+}
+
+.blogArticleHeadOut h2,
+.blogArticleHeadOut h3 {
+	background-color: rgba(240, 240, 240, 0.8);
+	padding: 3%;
+	margin: 0;
+}
+
+.blogArticleHead img,
+.blogArticleHead aside  {
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+}
+
+.blogArticleHead aside  {
+	padding: 3%;
 }
 
 .blogArticleContent h1 {
 	font-weight: bold;
+	font-size: 1.6em;
+}
+
+.blogArticleContent h2 {
+	text-align: left;
 	font-size: 1.4em;
 }
 
-/* Yieldown special
-------------------------------------------------------------------------------*/
+/*******************************************************************************
+*  Yieldown special
+*/
 .mykeyword {
 	font-family: cursive;
 	font-style: italic;

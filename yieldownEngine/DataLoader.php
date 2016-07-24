@@ -70,7 +70,7 @@ class DataLoader {
 			throw new Exception("Can't read articles in $path");
 		else {
 			foreach ($artFiles as $file) {
-				if ($file!='.' and $file!='..') {
+				if ($file!='.' and $file!='..' and $file!='_template.md') {
 					$fileContent = SELF::fileGetContents('article', $path.$file);
 					$rawBlog[$file] = $fileContent;
 				}

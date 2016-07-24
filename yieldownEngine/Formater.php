@@ -66,96 +66,27 @@ class Formater {
 	}
 
 
-		/***************************************************************************
-		* Apply format and extract data from blog article
-		*
-		* @param array $rawBlog All article in a raw format
-		*
-		* @return array Article objects list
-		*/
-		public static function formatBlog($rawBlog) {
-			$blog = array();
-
-			foreach ($rawBlog as $id => $rawArticle) {
-				$article = SELF::rawArticleToArticle($id, $rawArticle);
-				$blog[$id] = $article;
-			}
-
-			return $blog;
-		}
-
 	/***************************************************************************
-	* Read a raw article into a Article Object
+	* Apply format and extract data from blog article
 	*
-	* @param String $ID unique article id
-	* @param array $rawArticle article in a raw format
+	* @param array $rawBlog All article in a raw format
 	*
-	* @return Article objects
+	* @return array Article objects list
 	*/
-	public static function rawArticleToArticle($id, $rawArticle) {
-		$article = new stdClass();
-		$article->id = $id;
-		$head = null;
+	public static function formatBlog($rawBlog) {
+		$blog = array();
 
-		// HEAD / BODY
-		$res = preg_split(':-{3,}:', $rawArticle);
-		if (count($res)>=2) {
-			$head = $res[0];
-			$article->body = SELF::formatText($res[1]);
+		foreach ($rawBlog as $id => $rawArticle) {
+			try {
+				$article = ArticleBuilder::parse($id, $rawArticle);
+				$article->body = SELF::formatText($article->body);
+				$blog[$id] = $article;
+			} catch (Exception $e) {
+				throw new Exception("Can't read article '$id' - {$e->getMessage()}");
+			}
 		}
-		else
-			throw new Exception("Can't read article '$id' - No header found ! PREG#".preg_last_error());
 
-		// TITLE
-		$matches = array();
-		$res = preg_match (':#{1}(.*):', $head, $matches);
-		if ($res !== false and $res==1) {
-			$article->title = trim($matches[1]);
-			$head = str_replace($matches[0], '', $head);
-		}
-		else
-			throw new Exception("Can't read article '$id' - No title found ! PREG#".preg_last_error());
-
-		// AUTHOR
-		$matches = array();
-		$res = preg_match (':#{2}(.*):', $head, $matches);
-		if ($res !== false and $res==1) {
-			$article->author = trim($matches[1]);
-			$head = str_replace($matches[0], '', $head);
-		}
-		else
-			throw new Exception("Can't read article '$id' - No author found ! PREG#".preg_last_error());
-
-		// DATE
-		$matches = array();
-		$res = preg_match (':#{3}(.*):', $head, $matches);
-		if ($res !== false and $res==1) {
-			$article->date = trim($matches[1]);
-			$head = str_replace($matches[0], '', $head);
-		}
-		else
-			throw new Exception("Can't read article '$id' - No date found ! PREG#".preg_last_error());
-
-		// INTRO
-		$matches = array();
-		$res = preg_match (':#{4}(.*):', $head, $matches);
-		if ($res !== false and $res==1) {
-			$article->intro = trim($matches[1]);
-			$head = str_replace($matches[0], '', $head);
-		}
-		else
-			throw new Exception("Can't read article '$id' - No introduction found ! PREG#".preg_last_error());
-
-		// KEYWORDS
-		$matches = array();
-		$res = preg_match_all (':\*{1}\s*(.*)\s*:', $head, $matches);
-		if ($res !== false and $res>0) {
-			$article->keywords = $matches[1];
-		}
-		else
-			throw new Exception("Can't read article '$id' - No keywords found ! PREG#".preg_last_error());
-
-		return $article;
+		return $blog;
 	}
 
 	/***************************************************************************
@@ -212,4 +143,102 @@ class Formater {
 		return $tmp;
 	}
 
+}
+
+/*******************************************************************************
+********************************************************************************
+* Sub class to manage Blog article data extraction
+*
+* @author nikya
+* @date Creation 2016-07-17
+*/
+class ArticleBuilder {
+
+	/***************************************************************************
+	* Read a raw article into a Article Object
+	*
+	* @param String $ID unique article id
+	* @param array $rawArticle article in a raw format
+	*
+	* @return Article objects
+	*/
+	public static function parse ($id, $rawArticle) {
+		$article = new stdClass();
+		$article->id = $id;
+		$head = null;
+
+		// HEAD / BODY
+		$res = preg_split(':-{3,}:', $rawArticle);
+		if (count($res)>=2) {
+			$head = $res[0];
+			$article->body = $res[1];
+		}
+		else
+			throw new Exception("No header found ! PREG#".preg_last_error());
+
+		// TITLE
+		$matches = array();
+		$res = preg_match (':#{1}(.*):', $head, $matches);
+		if ($res !== false and $res==1) {
+			$article->title = trim($matches[1]);
+			$head = str_replace($matches[0], '', $head);
+		}
+		else
+			throw new Exception("No title found ! PREG#".preg_last_error());
+
+		// AUTHOR
+		$matches = array();
+		$res = preg_match (':#{2}(.*):', $head, $matches);
+		if ($res !== false and $res==1) {
+			$article->author = trim($matches[1]);
+			$head = str_replace($matches[0], '', $head);
+		}
+		else
+			throw new Exception("No author found ! PREG#".preg_last_error());
+
+		// DATE
+		$matches = array();
+		$res = preg_match (':#{3}(.*):', $head, $matches);
+		if ($res !== false and $res==1) {
+			$article->date = trim($matches[1]);
+			$head = str_replace($matches[0], '', $head);
+		}
+		else
+			throw new Exception("No date found ! PREG#".preg_last_error());
+
+		// INTRO
+		$matches = array();
+		$res = preg_match (':#{4}(.*):', $head, $matches);
+		if ($res !== false and $res==1) {
+			$article->intro = trim($matches[1]);
+			$head = str_replace($matches[0], '', $head);
+		}
+		else
+			throw new Exception("No introduction found ! PREG#".preg_last_error());
+
+		// KEYWORDS
+		$matches = array();
+		$res = preg_match_all (':\*{1}\s*(.*)\s*:', $head, $matches);
+		if ($res !== false and $res>0) {
+			$article->keywords = $matches[1];
+		}
+		else
+			throw new Exception("No keywords found ! PREG#".preg_last_error());
+
+		// Illustration
+		$matches = array();
+		$res = preg_match (':(\!\[(.*?)\])(\((.*?)("(.*?)")*\)):', $head, $matches);
+		if ($res !== false and $res==1)  {
+			$article->illustrationAlt = $matches[2];
+			$article->illustrationSrc = $matches[4];
+			$article->illustrationTitle = isset($matches[6]) ? $matches[6] : '';
+		}
+		else {
+			$article->illustrationAlt = null;
+			$article->illustrationSrc = null;
+			$article->illustrationTitle = null;
+		}
+
+		return $article;
+	}
 }
