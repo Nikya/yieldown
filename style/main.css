@@ -112,7 +112,7 @@ dd {
 }
 
 .blogArticleHead {
-	background-color: rgba(240, 240, 240, 0.6);
+	background-color: rgba(240, 240, 240, 0.9);
 	padding: 3%;
 }
 
@@ -126,7 +126,7 @@ dd {
 
 .blogArticleHeadOut h2,
 .blogArticleHeadOut h3 {
-	background-color: rgba(240, 240, 240, 0.8);
+	background-color: rgba(240, 240, 240, 0.96);
 	padding: 3%;
 	margin: 0;
 }
@@ -150,6 +150,11 @@ dd {
 .blogArticleContent h2 {
 	text-align: left;
 	font-size: 1.4em;
+}
+
+.blogArticleContent img {
+	max-width: 100%;
+	max-height: 500px;
 }
 
 /*******************************************************************************

@@ -11,12 +11,10 @@ Blabla
 * [x] Load a complet text
 * [x] Load a collection (Donnée organisées)
 * [x] Blog : Publication d'articles
-* [ ] Référencement
-	* _index.php et index_.php pour inclure du PHP plus avancé
-	* Pour généré des title Descript et keywod différent pour chaque page
-		* Une sous collection pour ces inforamtion changeante ?
+* [x] Référencement et assemblage :
 * [ ] Mise en cache
 	* MD5 de l'url si est correcte
+* [ ] Protection par Htacces
 * [ ] Partie admin
 	* Download des fichiers
 	* Supression des fichiers

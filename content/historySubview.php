@@ -1,16 +1,14 @@
-<h2>Historique</h2>
+<h2><?php echo $subTitle ?></h2>
 
 <?php
-	$history = Yieldown::loadCollection('history', array('event') );
-
 	foreach ($history as $story) {
-		echo <<<HD
+		echo <<<SUBVIEW
 
 <dl>
 	<dt>$story->year</dt>
 	<dd>$story->event</dd>
 </dl>
 
-HD;
+SUBVIEW;
 	}
 ?>

@@ -1,58 +1,71 @@
-
 <?php
 	ini_set('display_errors',1);
 	error_reporting(E_ALL);
 
 	require_once("yieldownEngine/Yieldown.php");
 
-	$target='home';
-	if (isset($_GET['p']) and !empty($_GET['p']) )
-		$target=$_GET['p'];
+////////////////////////////////////////////////////////////////////////////////
+	// MANDATORY VARS
 
+	/** Pre-processing : Scripting before building the page */
+	$pre = 'homePre.php';
+
+	/** Post-processing : Scripting after building the page */
+	$post = 'standardPost.php';
+
+	/** View : The global page template */
+	$view = 'standardView.php';
+
+	/** Sub-view : The sub content to load into the view */
+	$subview = 'homeSubview.php';
+
+	/** Title : The HTML/Head title */
+	$title = "L'histoire du Jeans";
+
+	/** Description : The HTML/Head description */
+	$description = "L'histoire du jeans : pantalon à coutures, coupé dans une toile denim.";
+
+	/** Keywords : The HTML/Head keywords */
+	$keywords = "jeans, markdown, yieldown, demo";
+
+////////////////////////////////////////////////////////////////////////////////
+	// Altering mandatory vars
+
+	if (isset($_GET['p']) and !empty($_GET['p']) ) {
+		$p=$_GET['p'];
+
+		switch ($p) {
+			case 'blog':
+				$pre = 'blogPre.php';
+				break;
+
+			case 'history':
+				$subview = 'historySubview.php';
+				$pre = 'historyPre.php';
+				break;
+
+			case 'tone':
+				$subview = 'toneSubview.php';
+				$pre = 'tonePre.php';
+				break;
+
+			case 'cut':
+				$subview = 'cutSubview.php';
+				$pre = 'cutPre.php';
+				break;
+
+			case 'error':
+			default:
+				$subview = 'errorSubview.php';
+				$pre = 'errorPre.php';
+				break;
+		}
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+	// Assembling the page
+
+	include('content/'.$pre);
+	include('content/'.$view); // Using $subview, $title, $description, $keywords
+	include('content/'.$post);
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-	<title>L'histoire du jeans</title>
-	<meta name="keywords" content="jeans, markdown, yieldown" />
-	<meta name="description" content="L'histoire du jeans : pantalon à coutures, coupé dans une toile denim." />
-	<link href="style/main.css" rel="stylesheet">
-</head>
-
-<body>
-	<header class="header">
-		<h1>L'histoire du jeans</h1>
-
-		<h3>Site factice de démonstration pour le générateur de site Yieldown</h3>
-	</header><!-- .header-->
-
-	<nav>
-		<a href=".">Accueil</a>
-		<a href="?p=blog">Blog</a>
-		<a href="?p=history">Historique</a>
-		<a href="?p=tone">Types de tons</a>
-		<a href="?p=cut">Types de coupes</a>
-	</nav>
-
-	<section> <!-- CONTENT -->
-		<?php include("content/$target.php"); ?>
-	</section>
-
-	<footer>
-		<strong>Site factice de démonstration pour le générateur de site <em>Yieldown</em></strong>
-		<br/><br/>
-		<p>Auteur : <a href="https://github.com/Nikya">Nikya</a>
-		<p>Source : <a href="https://github.com/Nikya/yieldown">Yieldown</a>
-
-		<hr/>
-
-		<p>Source du contenue : <a href="https://fr.wikipedia.org/wiki/Jeans">Wikipedia</a>
-		<p>Source du blog : <a href="http://fr.wikihow.com/Special:GoogSearch?q=jeans">Wikihow</a>
-		<p>Source photo : <a href="https://pixabay.com/fr/jeans-de-poche-tissu-v%C3%AAtements-1751/">Pixabay</a>
-		<p>Markdown Engine : <a href="http://parsedown.org/">Parsedown</a>
-	</footer>
-
-</body>
-</html>
