@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Yieldown - Administration</title>
+	<title>Administration</title>
 	<meta name="keywords" content="yieldown, admin" />
 	<meta name="description" content="yieldown Admin page" />
 	<link href="main.css" rel="stylesheet">
@@ -10,7 +10,7 @@
 
 <body>
 	<a href='..'>&lArr; Retour</a>
-	<h1>Yieldown - Administration</h1>
+	<h1>Administration</h1>
 
 	<?php if (!empty($msg)) echo '<p class="msg">'.$msg.'</p>'; ?>
 
@@ -77,5 +77,9 @@ FILE;
 			</tbody>
 		</table>
 	</form>
+
+	<footer>
+		Powered by <a href="https://github.com/Nikya/yieldown">Yieldown</a> | Admin chemin absolu : <?php echo realpath('.') ?> 
+	</footer>
 </body>
 </html>

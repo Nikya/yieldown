@@ -21,4 +21,5 @@ Blabla
 	* [x] (Upload de fichier)
 		* Choix tu type de fiochier et direction directemetn le bon répertoire
 	* [x] Bouton de régénration du cache
-	* [ ] Afficher l'aide
+	* [x] Afficher l'aide
+* Rédiger la doc
