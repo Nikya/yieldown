@@ -16,8 +16,9 @@ Blabla
 	* MD5 de l'url si est correcte
 * [ ] Protection par Htacces
 * [ ] Partie admin
-	* Download des fichiers
-	* Supression des fichiers
-	* (Upload de fichier)
+	* [x] Download des fichiers
+	* [x] Supression des fichiers
+	* [x] (Upload de fichier)
 		* Choix tu type de fiochier et direction directemetn le bon répertoire
-	* Bouton de régénration du cache
+	* [x] Bouton de régénration du cache
+	* [ ] Afficher l'aide

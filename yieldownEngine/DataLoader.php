@@ -65,6 +65,7 @@ class DataLoader {
 		$rawBlog = array();
 
 		$artFiles = scandir($path);
+		arsort($artFiles);
 
 		if ($artFiles===false)
 			throw new Exception("Can't read articles in $path");

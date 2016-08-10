@@ -17,10 +17,10 @@
 
 
 
-Séparateur d'entête et corps ...
+Ci-aprés, le séparateur d'entête et corps ...
 -----
 
-# 1.) My article part 1
+# 1) My article part 1
 
 ## 1.a) My article sub part
 
@@ -42,7 +42,7 @@ Proin risus ante, hendrerit porta molestie a, dignissim a nisl. Duis quis ultric
 4. Liste numérotée item 4
 99. Liste numérotée item 99
 
-# 2.) My article part2
+# 2) My article part2
 
 ## 2.a) My article sub part
 

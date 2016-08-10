@@ -1,0 +1,105 @@
+body {
+	background-color: #000000;
+	color:#FFFFFF;
+	padding: 2%;
+}
+
+h1, .msg {
+	text-align: center;
+	border: 2px solid #00cc99;
+	border-width: 2px 0;
+	margin-bottom: 50px;
+}
+
+h2 {
+	border-bottom: 2px solid #00cc99;
+	width: auto;
+	margin-top: 50px;
+	margin-bottom: 5px;
+}
+
+.msg {
+	background-color: #DDD;
+	padding: 3px;
+	color:#000;
+}
+
+a {
+	color:lightblue;
+}
+
+em.tdd {
+	color:#00cc99;
+}
+
+#dataListing {
+	width:100%;
+	background-color: #FFFFFF;
+	color:#000000;
+	border-collapse:collapse;
+}
+
+#dataListing th {
+	background:#000000;
+	color:#FFF;
+	text-align: right;
+}
+
+#dataListing td {
+	background:#DDD;
+	padding:3px;
+}
+
+#dataListing tr.folder td {
+	background-color: #ddffe4;
+}
+
+#dataListing tr.folder td.path {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#dataListing td.fileName {
+	padding-left: 2%;
+}
+
+.action {
+	text-align: right;
+}
+
+ul#actions li {
+	margin-bottom: 15px;
+}
+
+.btn {
+	border: 2px solid #F5F5F5;
+	background-color: #F5F5F5;
+	display: inline-block;
+	padding: 1px;
+	border-radius: 1px;
+	color:black;
+	text-decoration: none;
+	margin-right: 3px;
+}
+
+.btn:hover {
+	border-color:black;
+	cursor:pointer;
+}
+
+.btnDelete:hover {
+	color:red;
+	border-color:red;
+}
+
+.btn:active {
+	background-color: #FFF;
+}
+
+#helpBox {
+	margin-left: 10%;
+	border-left: 5px solid #00cc99;
+	padding: 5px;
+	font-size: 0.9em;
+	background-color: #444;
+}
