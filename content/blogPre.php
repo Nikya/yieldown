@@ -22,6 +22,7 @@
 	// Display a full article
 	else {
 		$subview = "blogArticleSubview.php";
+		$subsubview = $targetArticle;
 
 		$article = $blog[$targetArticle];
 

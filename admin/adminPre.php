@@ -6,13 +6,15 @@
 		$files = scandir($dir);
 		$results = array();
 
-		foreach($files as $key => $value){
-			$rPath = $dir.$value;
-			if(!is_dir($rPath)) {
-				$results[$rPath] = $value;
-			} else if($value != "." && $value != "..") {
-				$subDir = getDirContents($rPath.DIRECTORY_SEPARATOR);
-				$results[$rPath] = $subDir;
+		foreach($files as $key => $value) {
+			if ($value != '.' and $value != '..' and $value != '.htaccess') {
+				$rPath = $dir.$value;
+				if(!is_dir($rPath)) {
+					$results[$rPath] = $value;
+				} else {
+					$subDir = getDirContents($rPath.DIRECTORY_SEPARATOR);
+					$results[$rPath] = $subDir;
+				}
 			}
 		}
 
@@ -73,8 +75,24 @@
 	// To get the readme file as help text
 	function regen() {
 		global $msg;
+		$fileCnt = 0;
+		$fileDel = 0;
 
-		$msg = 'Fonction de mise en cache non disponible.';
+		$files = glob('../cache/*');
+		foreach($files as $file) {
+			$fileCnt++;
+			if(unlink($file)) {
+				$fileDel++;
+			} else {
+				$msg .= ',$file';
+			}
+		}
+
+		if ($fileCnt==0) {
+			$msg = 'Aucun fichier à supprimer';
+		} else {
+			$msg = "Cache vidé $fileDel/$fileCnt fichiers supprimés. ". (!empty($msg) ? "Fichiers en erreur : $msg " : '');
+		}
 	}
 
 	// To upload a new file
