@@ -12,7 +12,7 @@
 	<a href='..'>&lArr; Retour</a>
 	<h1>Administration</h1>
 
-	<?php if (!empty($msg)) echo '<p class="msg">'.$msg.'</p>'; ?>
+	<?php if (!empty($msg)) echo "<p class=\"msg $msgClass\">$msg</p>"; ?>
 
 	<h2>Actions</h2>
 	<form action="." method="post" enctype="multipart/form-data" >
@@ -48,8 +48,6 @@
 HELPBOX;
 } ?>
 
-		<?php if (!empty($msg)) echo '<p class="msg">'.$msg.'</p>'; ?>
-
 		<h2>Table des données</h2>
 		<table id='dataListing'>
 			<tbody>
@@ -79,7 +77,7 @@ FILE;
 	</form>
 
 	<footer>
-		Powered by <a href="https://github.com/Nikya/yieldown">Yieldown</a> | Admin chemin absolu : <?php echo realpath('.') ?> 
+		Powered by <a href="https://github.com/Nikya/yieldown">Yieldown</a> | Admin chemin absolu : <?php echo realpath('.') ?>
 	</footer>
 </body>
 </html>

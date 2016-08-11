@@ -20,4 +20,7 @@ Blabla
 	* [x] Upload de fichier
 	* [x] Bouton de régénération du cache
 	* [x] Afficher l'aide
+	* [ ] Notification plus visuel
+	* [ ] Data table avece explication
 * [ ] Rédiger la doc
+* [ ] Mod rewrite

@@ -26,7 +26,7 @@
 		global $msg;
 
 		if (!file_exists($fileId)) {
-			$msg = "Le fichier '$fileId' est introuvable.";
+			$msg = MSG_KO."Le fichier '$fileId' est introuvable.";
 			return;
 		}
 
@@ -42,16 +42,16 @@
 		global $msg;
 
 		if (!file_exists($fileId)) {
-			$msg = "Le fichier '$fileId' est introuvable.";
+			$msg = MSG_KO."Le fichier '$fileId' est introuvable.";
 			return;
 		}
 
 		if (stripos($fileId, '_template.md')!==false)
-			$msg = "Le fichier TEMPLATE ne peut pas être supprimé";
+			$msg = MSG_KO."Le fichier TEMPLATE ne peut pas être supprimé";
 		else if (unlink ($fileId))
-			$msg = "Fichier supprimé $fileId";
+			$msg = MSG_OK."Fichier supprimé $fileId";
 		else
-			$msg = "Impossible de supprimer le fichier $fileId";
+			$msg = MSG_KO."Impossible de supprimer le fichier $fileId";
 	}
 
 	// To get the readme file as help text
@@ -62,7 +62,7 @@
 		$file = '../README.md';
 
 		if (!file_exists($file)) {
-			$msg = "Le fichier '$file' est introuvable.";
+			$msg = MSG_KO."Le fichier '$file' est introuvable.";
 			return $msg;
 		}
 
@@ -89,9 +89,9 @@
 		}
 
 		if ($fileCnt==0) {
-			$msg = 'Aucun fichier à supprimer';
+			$msg = MSG_OK.'Aucun fichier à supprimer';
 		} else {
-			$msg = "Cache vidé $fileDel/$fileCnt fichiers supprimés. ". (!empty($msg) ? "Fichiers en erreur : $msg " : '');
+			$msg = MSG_OK."Cache vidé $fileDel/$fileCnt fichiers supprimés. ". (!empty($msg) ? "Fichiers en erreur : $msg " : '');
 		}
 	}
 
@@ -106,9 +106,9 @@
 		$extension = strrchr($_FILES['nFile']['name'], '.');
 		//Début des vérifications de sécurité...
 		if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-			$msg = "Vous devez uploader un fichier de type .png, .gif, .jpg, .md, .json";
+			$msg = MSG_KO."Vous devez uploader un fichier de type .png, .gif, .jpg, .md, .json";
 		if($taille>$taille_maxi)
-			$msg = "Le fichier est trop gros : $taille>$taille_maxi o";
+			$msg = MSG_KO."Le fichier est trop gros : $taille>$taille_maxi o";
 		if(!isset($msg)) //S'il n'y a pas d'erreur, on upload
 		{
 			//On formate le nom du fichier ici...
@@ -119,9 +119,9 @@
 
 			//var_dump($_FILES['nFile']['tmp_name'].'>>>'. $destPath .DIRECTORY_SEPARATOR. $fichier);
 			if(move_uploaded_file($_FILES['nFile']['tmp_name'], $destPath .DIRECTORY_SEPARATOR. $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-				$msg = "Chargement du fichier '$fichier' effectué avec succès.";
+				$msg = MSG_OK."Chargement du fichier '$fichier' effectué avec succès.";
 			else //Sinon (la fonction renvoie FALSE).
-				$msg = "Echec du chargement du fichier '$fichier' - " . $_FILES['nFile']['error'];
+				$msg = MSG_KO."Echec du chargement du fichier '$fichier' - " . $_FILES['nFile']['error'];
 		}
 	}
 
@@ -140,7 +140,7 @@
 				uploadFile($destPath);
 			}
 		} else
-			$msg = "Aucun fichier sélectionée.";
+			$msg = MSG_KO."Aucun fichier sélectionée.";
 
 	// Other Action
 	} else if(isset($_GET['action']) and !empty($_GET['action']) ) {
@@ -168,7 +168,7 @@
 				break;
 
 			default:
-				$msg = "Action inconnue !!";
+				$msg = MSG_KO."Action inconnue !!";
 				break;
 		}
 	}

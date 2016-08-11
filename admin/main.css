@@ -20,8 +20,18 @@ h2 {
 
 .msg {
 	background-color: #DDD;
+	border-width: 7px 0;
 	padding: 3px;
 	color:#000;
+	font-weight: bold;
+}
+
+.msgOk {
+	border-color: lime;
+}
+
+.msgKo {
+	border-color: red;
 }
 
 a {
@@ -102,6 +112,8 @@ ul#actions li {
 	padding: 5px;
 	font-size: 0.9em;
 	background-color: #444;
+	max-height: 300px;
+	overflow: auto;
 }
 
 footer {
