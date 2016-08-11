@@ -12,23 +12,6 @@
 		$files = scandir($dir);
 
 		return array_diff($files, $toHideFiles);
-
-		/*var_dump($files); exit;
-		$results = array();
-
-		foreach($files as $key => $value) {
-			if ($value != '.' and $value != '..' and $value != '.htaccess') {
-				$rPath = $dir.$value;
-				if(!is_dir($rPath)) {
-					$results[$rPath] = $value;
-				} else {
-					$subDir = getDirContents($rPath.DIRECTORY_SEPARATOR);
-					$results[$rPath] = $subDir;
-				}
-			}
-		}
-
-		return $results;*/
 	}
 
 	// To see raw file
@@ -99,10 +82,44 @@
 		}
 
 		if ($fileCnt==0) {
-			$msg = MSG_OK.'Aucun fichier à supprimer';
+			$msg = MSG_OK.'Cache déjà vierge.';
 		} else {
-			$msg = MSG_OK."Cache vidé $fileDel/$fileCnt fichiers supprimés. ". (!empty($msg) ? "Fichiers en erreur : $msg " : '');
+			$msg = MSG_OK."Cache vidé $fileDel/$fileCnt fichiers supprimés. ". (!empty($msg) ? "Fichiers en erreur : $msg." : '');
 		}
+	}
+
+	// Save all data
+	function backup() {
+		global $msg;
+
+		$src = '../data';
+		$dst = '../databackup/databackup_' . date('Ymd_His');
+
+		recurse_copy($src,$dst);
+
+		if (is_dir($dst))
+			$msg .= ' '.MSG_OK.' Backup réalisé.';
+		else
+			$msg .= ' '.MSG_KO." Echec de la réalisation du backup de '$src' vers '$dst'";
+	}
+
+	// Copy a folder and his content
+	function recurse_copy($src,$dst) {
+		$dir = opendir($src);
+
+		mkdir($dst);
+
+		while(false !== ( $file = readdir($dir)) ) {
+			if (( $file != '.' ) && ( $file != '..' )) {
+				if ( is_dir($src . '/' . $file) ) {
+					recurse_copy($src . '/' . $file,$dst . '/' . $file);
+				}
+				else {
+					copy($src . '/' . $file,$dst . '/' . $file);
+				}
+			}
+		}
+		closedir($dir);
 	}
 
 	// To upload a new file
@@ -170,6 +187,7 @@
 
 			case 'regen':
 				regen();
+				backup();
 				break;
 
 			default:

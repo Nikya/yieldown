@@ -11,16 +11,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Format notification message
-	$msgClass = 'msg';
+	$msgClass = '';
 
 	if (!empty($msg)) {
 		if (stripos($msg, MSG_OK)!==false) {
 			$msg = str_replace(MSG_OK, '', $msg);
-			$msgClass .= 'Ok';
+			$msgClass .= ' msgOk';
 		}
-		else if (stripos($msg, MSG_KO)!==false) {
+
+		if (stripos($msg, MSG_KO)!==false) {
 			$msg = str_replace(MSG_KO, '', $msg);
-			$msgClass .= 'Ko';
+			$msgClass .= ' msgKo';
 		}
 	}
 

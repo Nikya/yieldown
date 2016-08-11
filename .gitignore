@@ -1,2 +1,5 @@
 cache/*
 !cache/.htaccess
+
+databackup/*
+!databackup/.htaccess
