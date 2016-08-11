@@ -1,3 +1,7 @@
+
+/*******************************************************************************
+* COMMON
+*/
 body {
 	background-color: #000000;
 	color:#FFFFFF;
@@ -18,6 +22,17 @@ h2 {
 	margin-bottom: 5px;
 }
 
+a {
+	color:lightblue;
+}
+
+em.tdd {
+	color:#00cc99;
+}
+
+/*******************************************************************************
+* Notification Message
+*/
 .msg {
 	background-color: #DDD;
 	border-width: 7px 0;
@@ -34,44 +49,55 @@ h2 {
 	border-color: red;
 }
 
-a {
-	color:lightblue;
-}
-
-em.tdd {
-	color:#00cc99;
-}
-
+/*******************************************************************************
+* Data listing table Message
+*/
 #dataListing {
 	width:100%;
-	background-color: #FFFFFF;
-	color:#000000;
 	border-collapse:collapse;
-}
-
-#dataListing th {
-	background:#000000;
-	color:#FFF;
-	text-align: right;
+	white-space: nowrap;
 }
 
 #dataListing td {
-	background:#DDD;
 	padding:3px;
 }
 
-#dataListing tr.folder td {
-	background-color: #ddffe4;
+#dataListing tr.subhead {
+	border-top: solid 25px black;
+	background-color: black;
+	border-bottom: solid 5px black;
 }
 
-#dataListing tr.folder td.path {
-	font-size: 1.2em;
+#dataListing tr.folder {
+	background-color: #ddffe4;
+	color: black;
+}
+
+#dataListing tr.file {
+	background-color: #FFF;
+	color: black;
+}
+
+#dataListing td.title {
+	font-size: 1.3em;
 	font-weight: bold;
+	text-align: center;
+	border-bottom: solid 5px #00cc99;
+}
+
+#dataListing tr.subhead td.desc {
+	font-size: 0.9em;
+	white-space: normal;
+	border-bottom: solid 5px black;
 }
 
 #dataListing td.fileName {
 	padding-left: 2%;
 }
+
+/*******************************************************************************
+* Actiosn and Buttons
+*/
 
 .action {
 	text-align: right;
@@ -82,10 +108,10 @@ ul#actions li {
 }
 
 .btn {
-	border: 2px solid #F5F5F5;
-	background-color: #F5F5F5;
+	border: 2px outset #F5F5F5;
+	background-color: #DDD;
 	display: inline-block;
-	padding: 1px;
+	padding: 2px;
 	border-radius: 1px;
 	color:black;
 	text-decoration: none;
@@ -106,6 +132,9 @@ ul#actions li {
 	background-color: #FFF;
 }
 
+/*******************************************************************************
+* Other
+*/
 #helpBox {
 	margin-left: 10%;
 	border-left: 5px solid #00cc99;

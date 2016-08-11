@@ -51,22 +51,26 @@ HELPBOX;
 		<h2>Table des données</h2>
 		<table id='dataListing'>
 			<tbody>
-				<?php foreach ($dataListing as $path => $data) {
+				<?php foreach ($dataListing as $oData) {
 					echo <<<FOLDER_H
+						<tr class="subhead">
+							<td class="title" colspan="2">$oData->title</td>
+							<td class="desc">$oData->desc</td>
+						</tr>
 						<tr class="folder">
-							<td class="action"><input type="submit" name="actionAdd[$path]" value="Ajouter à" class="btn"/></td>
-							<td class="path">$path</td>
+							<td class="action"><input type="submit" name="actionAdd[$oData->path]" value="Ajouter à" class="btn"/></td>
+							<td class="path" colspan="2">$oData->path</td>
 						</tr>
 FOLDER_H;
-					foreach ($data as $filePath => $fileName) {
-						$fileId = urlencode($path.DIRECTORY_SEPARATOR.$fileName);
+					foreach ($oData->filesList as $fileName) {
+						$fileId = urlencode($oData->path.DIRECTORY_SEPARATOR.$fileName);
 						echo <<<FILE
 						<tr class="file">
 							<td class="action">
 								<a class="btn btnDelete" href=".?action=delete&fileId=$fileId">Suppr.</div>
 								<a class="btn" href=".?action=see&fileId=$fileId">Voir</a>
 							</td>
-							<td class="fileName">$fileName</td>
+							<td class="fileName" colspan="2">$fileName</td>
 						</tr>
 FILE;
 					}

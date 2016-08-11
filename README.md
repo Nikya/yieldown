@@ -20,7 +20,9 @@ Blabla
 	* [x] Upload de fichier
 	* [x] Bouton de régénération du cache
 	* [x] Afficher l'aide
-	* [ ] Notification plus visuel
-	* [ ] Data table avece explication
+	* [x] Notification plus visuel
+	* [x] Data table avec explication
+	* [ ] Backup des donnée à chaque régen.
 * [ ] Rédiger la doc
 * [ ] Mod rewrite
+* [ ] Reset CSS special Markdown

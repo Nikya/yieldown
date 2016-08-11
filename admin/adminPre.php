@@ -3,7 +3,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 	// To read a folder content
 	function getDirContents($dir){
+		$toHideFiles = array (
+			'.',
+			'..',
+			'.htaccess'
+		);
+
 		$files = scandir($dir);
+
+		return array_diff($files, $toHideFiles);
+
+		/*var_dump($files); exit;
 		$results = array();
 
 		foreach($files as $key => $value) {
@@ -18,7 +28,7 @@
 			}
 		}
 
-		return $results;
+		return $results;*/
 	}
 
 	// To see raw file
@@ -126,11 +136,6 @@
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
-	// Process
-	$dataListing = getDirContents('../data/');
-	//echo '<pre>'.print_r($dataListing, true).'</pre>';
-
-////////////////////////////////////////////////////////////////////////////////
 	// Read form
 
 	// Add action
@@ -175,4 +180,38 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Load data table
-	$dataListing = getDirContents('../data/');
+
+	// text
+	$oText = new stdClass();
+	$oText->title = 'Les textes';
+	$oText->desc = 'Contient des textes formatables. Un texte par fichier au format Markdown (.md)';
+	$oText->path = '../data/text';
+	$oText->filesList = getDirContents($oText->path);
+
+	// Collection
+	$oCollection = new stdClass();
+	$oCollection->title = 'Les collections';
+	$oCollection->desc = 'Contient des collections de données. Une collection par fichier au format Json (.json)';
+	$oCollection->path = '../data/collection';
+	$oCollection->filesList = getDirContents($oCollection->path);
+
+	// Blog
+	$oBlog = new stdClass();
+	$oBlog->title = 'Le blog';
+	$oBlog->desc = 'Contient le blog. Utiliser le fichier TEMPLATE comme modèle pour rédiger un nouvel article. Un article de blog par fichier au format Markdown (.md)';
+	$oBlog->path = '../data/blog';
+	$oBlog->filesList = getDirContents($oBlog->path);
+
+	// Aside
+	$oAside = new stdClass();
+	$oAside->title = 'A côté';
+	$oAside->desc = 'Contient des éléments secondaires utilisables dans le blog ou le reste du site. (images, téléchargeables, ...)';
+	$oAside->path = '../data/aside';
+	$oAside->filesList = getDirContents($oAside->path);
+
+	$dataListing = array(
+		$oText,
+		$oCollection,
+		$oBlog,
+		$oAside
+	);
