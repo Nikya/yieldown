@@ -1,10 +1,8 @@
-# yieldown
-A light website generator using PHP and Markdown
+# Yieldown
 
-## Features
+A light website generator using PHP and Markdown.
 
-
-Blabla
+## Under construction ...
 
 ## Todo
 
@@ -12,7 +10,7 @@ Blabla
 * [x] Load a collection (Donnée organisées)
 * [x] Blog : Publication d'articles
 * [ ] Reset CSS special Markdown
-* [x] Référencement et assemblage :
+* [x] Référencement et assemblage
 * [x] Mise en cache
 * [x] Protection par Htacces
 * [ ] Mod rewrite
