@@ -6,6 +6,7 @@ body {
 	background-color: #000000;
 	color:#FFFFFF;
 	padding: 2%;
+	font-family: sans-serif;
 }
 
 h1, .msg {
@@ -93,6 +94,7 @@ em.tdd {
 
 #dataListing td.fileName {
 	padding-left: 2%;
+	font-family: monospace;
 }
 
 /*******************************************************************************
