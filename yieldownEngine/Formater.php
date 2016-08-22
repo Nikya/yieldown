@@ -171,7 +171,8 @@ class ArticleBuilder {
 		$res = preg_split(':-{3,}:', $rawArticle);
 		if (count($res)>=2) {
 			$head = $res[0];
-			$article->body = $res[1];
+			unset($res[0]); // Remove header
+			$article->body = implode(' ', $res); // Merge the rest into the body
 		}
 		else
 			throw new Exception("No header found ! PREG#".preg_last_error());
