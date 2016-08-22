@@ -1,6 +1,9 @@
 <?php
 
 ////////////////////////////////////////////////////////////////////////////////
+// Admin functions
+////////////////////////////////////////////////////////////////////////////////
+
 	// To read a folder content
 	function getDirContents($dir){
 		$toHideFiles = array (
@@ -151,6 +154,10 @@
 				$msg = MSG_KO."Echec du chargement du fichier '$fichier' - " . $_FILES['nFile']['error'];
 		}
 	}
+
+	// Get Yieldown version
+	require_once('../yieldownEngine/Yieldown.php');
+	$yieldownVersion = Yieldown::VERSION;
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Read form

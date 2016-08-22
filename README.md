@@ -1,5 +1,7 @@
 # Yieldown
 
+Version 1.0
+
 A light website generator using PHP and Markdown.
 
 ## Under construction ...
@@ -24,5 +26,6 @@ A light website generator using PHP and Markdown.
 	* [x] Notification plus visuel
 	* [x] Data table avec explication
 	* [x] Backup des donnée à chaque régen.
+	* [ ] Backup warning and count
 	* [ ] Affichage version
 * [ ] Rédiger la doc

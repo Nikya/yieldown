@@ -10,7 +10,12 @@
 
 <body>
 	<a href='..'>&lArr; Retour</a>
-	<h1>Administration</h1>
+
+
+	<h1>Administration
+		<p>Yieldown v<?php echo $yieldownVersion ?></p>
+	</h1>
+
 
 	<?php if (!empty($msg)) echo "<p class=\"msg $msgClass\">$msg</p>"; ?>
 
@@ -81,7 +86,7 @@ FILE;
 	</form>
 
 	<footer>
-		Powered by <a href="https://github.com/Nikya/yieldown">Yieldown</a> | Admin chemin absolu : <?php echo realpath('.') ?>
+		Powered by <a href="https://github.com/Nikya/yieldown">Yieldown</a> v<?php echo $yieldownVersion ?> | Admin chemin absolu : <?php echo realpath('.') ?>
 	</footer>
 </body>
 </html>

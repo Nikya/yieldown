@@ -1,4 +1,7 @@
 <?php
+
+	// THE ONLY ONE ENTRY POINT
+
 	ini_set('display_errors',1);
 	error_reporting(E_ALL);
 
@@ -18,7 +21,7 @@
 	/** Sub-view : The sub content to load into the view */
 	$subview = 'homeSubview.php';
 
-	/** [optional] Another subsubview */
+	/** [optional] Another sub-subview */
 	$subsubview = null;
 
 	/** Title : The HTML/Head title */
@@ -29,8 +32,6 @@
 
 	/** Keywords : The HTML/Head keywords */
 	$keywords = "jeans, markdown, yieldown, demo";
-
-	/** [optional] Another subsubview */
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Altering mandatory vars
