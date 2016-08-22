@@ -142,6 +142,10 @@ dd {
 	padding: 3%;
 }
 
+.blogArticleContent {
+	padding-top: 2%;
+}
+
 .blogArticleContent h1 {
 	font-weight: bold;
 	font-size: 1.6em;

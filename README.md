@@ -9,7 +9,7 @@ A light website generator using PHP and Markdown.
 * [x] Load a complet text
 * [x] Load a collection (Donnée organisées)
 * [x] Blog : Publication d'articles
-* [ ] Reset CSS special Markdown
+* [x] Reset CSS special Markdown
 * [x] Référencement et assemblage
 * [x] Mise en cache
 * [x] Protection par Htacces
@@ -19,8 +19,10 @@ A light website generator using PHP and Markdown.
 	* [x] Supression des fichiers
 	* [x] Upload de fichier
 	* [x] Bouton de régénération du cache
+	* [ ] Cache désactivable
 	* [x] Afficher l'aide
 	* [x] Notification plus visuel
 	* [x] Data table avec explication
 	* [x] Backup des donnée à chaque régen.
+	* [ ] Affichage version
 * [ ] Rédiger la doc

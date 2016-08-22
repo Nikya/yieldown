@@ -26,11 +26,11 @@
 		</div>
 
 
-		<div class="blogArticleContent">
+		<div class="markdown-body blogArticleContent">
 			$article->body
 		</div>
 
-		
+
 	</article>
 
 ARTICLE;

@@ -4,9 +4,9 @@
 
 ### 2999-12-31 23:59
 
-#### Un texte d'introduction et de sommaire de l'article. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus non ipsum vel volutpat. Duis diam turpis, laoreet eu dolor sed, gravida condimentum lacus. Nulla ullamcorper orci eget velit maximus, tristique fermentum odio lobortis.
+#### Un texte d'introduction et de sommaire de l'article ...
 
-![Mon image d'entête](data/aside/enteteImage.jpg "Ceci est le descriptif de l'image d'entête")
+![Mon image d'entête](data/aside/enteteImage.jpg "Et un descriptif de l'image d'entête")
 
 * Mot clé 1
 * Mot clé 2
@@ -15,38 +15,204 @@
 * Mot clé n
 
 
+--------------------------------------------------------------------------------
+
+Le principal contenue de l'article commence ici, après le séparateur `-----`, tout ce qui suit sera le *corps* de l'article.
+
+Comme certains textes dans _Yieldown_, un article de blog est à rédiger selon la syntaxe *Markdown*.
+
+* Aide rapide ci-dessous ou :  [Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Markdown Cheatsheet by Adam Pritchard")
+* Explication sur *Markdown* : [Wikipedia](https://fr.wikipedia.org/wiki/Markdown "Aide sur Wikipédia")
+* Site officiel de l'auteur : [Daring Fireball](http://daringfireball.net/projects/markdown)
 
 
-Ci-aprés, le séparateur d'entête et corps ...
------
+--------------------------------------------------------------------------------
 
-# 1) My article part 1
+# **Cheatsheet** : Toutes la syntaxe *Markdown*
 
-## 1.a) My article sub part
+## Title
 
-Explication sur la syntaxe *Markdown* utilisée pour rédiger des textes dans _Yieldown_ : [Markdown Wikipedia](https://fr.wikipedia.org/wiki/Markdown "Aide sur Wikipédia")
+# Title H1
+## Title H2
+### Title H3
+#### Title H4
+##### Title H5
+###### Title H6
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas **ceci est un text en gras** tempus non ipsum vel volutpat. Duis diam turpis, laoreet eu dolor sed, gravida condimentum lacus. Nulla ullamcorper orci eget velit maximus, tristique fermentum odio lobortis. Ut ultricies nunc est, sit amet faucibus quam semper eget. Morbi tincidunt tincidunt mollis. Sed _ceci est un text en italique_ eget nunc fermentum, elementum eros in, faucibus eros. Suspendisse maximus leo ut eleifend pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus sem justo, faucibus sit amet facilisis id, auctor sollicitudin est. Praesent risus eros, egestas ultrices sem vel, vestibulum dapibus nunc. Vivamus efficitur tincidunt nulla ac porttitor. Mauris egestas mi eget vulputate tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In finibus quis est eget mollis.
+## Emphasis
 
-## 1.b) My article sub part
+Emphasis, aka italics, with *asterisks* or _underscores_.
 
-Proin risus ante, hendrerit porta molestie a, dignissim a nisl. Duis quis ultricies sem. Fusce blandit, felis ut pellentesque tristique, sem sapien semper felis, vitae commodo sem libero nec lectus. Nam et fringilla quam. Nulla quis est et est suscipit congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus gravida, pretium erat et, fermentum odio. Donec eget cursus dolor, vitae viverra libero. Quisque vitae tempus tellus, in semper augue.
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
-![Une image](data/aside/image.jpg "Ceci est le descriptif de l'image")
+Combined emphasis with **asterisks and _underscores_**.
 
-### 1.b.1) My article sub part
+Strikethrough uses two tildes. ~~Scratch this~~
 
-1. Liste numérotée item 1
-2. Liste numérotée item 2
-3. Liste numérotée item 3
-4. Liste numérotée item 4
-99. Liste numérotée item 99
+## Lists
 
-# 2) My article part2
+1. First ordered list item
+2. Another item
+  * Unordered sub-list.
+1. Actual numbers don't matter, just that it's a number
+  1. Ordered sub-list
+4. And another item.  
+   Some text that should be aligned with the above item.
 
-## 2.a) My article sub part
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 
-Aliquam erat volutpat. In vulputate sollicitudin tortor, sed fermentum est elementum eu. Maecenas molestie hendrerit fringilla. Vestibulum ipsum urna, faucibus in augue sed, aliquam posuere metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere est at ligula venenatis consectetur. Aenean tincidunt, lectus id tempus tristique, sem mauris commodo eros, ut viverra sapien tortor eu dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+* List item
+* List item
+* List item
+* List item
+* List item
+* List item
 
-## 2.b) My article sub part
-Vestibulum lacinia massa vel neque condimentum aliquam. Aenean luctus est sed urna iaculis, sed egestas massa aliquam. Pellentesque consectetur ipsum molestie pharetra efficitur. Suspendisse sed lectus condimentum, dictum odio eget, consequat felis. Aenean non augue et est venenatis elementum. Cras pulvinar dolor in eros pellentesque sagittis. Aliquam augue lorem, volutpat id metus eu, faucibus cursus leo. Curabitur mattis leo a tincidunt pharetra. Quisque vitae nibh pellentesque, aliquet orci vitae, mattis ex. Suspendisse potenti. Phasellus consequat porttitor lacus, eu varius purus scelerisque nec. Aenean tincidunt varius molestie. Vestibulum at eros lectus. Etiam in rhoncus elit. Nam et elit quam.
+## Links
+
+There are two ways to create links.
+
+[I'm an inline-style link](https://www.google.com)
+
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
+
+[You can use numbers for reference-style link definitions][1]
+
+Or leave it empty and use the [link text itself]
+
+URLs and URLs in angle brackets will automatically get turned into links.
+http://www.example.com or <http://www.example.com> and sometimes
+example.com (but not on Github, for example).
+
+Some text to show that the reference links can follow later.
+
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com
+
+## Images
+
+Here's our logo (hover to see the title text):
+
+Inline-style:
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+Reference-style:
+![alt text][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+Here's our logo (hover to see the title text):
+
+## Code and Syntax Highlighting
+
+Code blocks are part of the Markdown spec, but syntax highlighting isn't. However, many renderers -- like Github's and Markdown Here -- support syntax highlighting. Markdown Here supports highlighting for dozens of languages (and not-really-languages, like diffs and HTTP headers); to see the complete list, and how to write the language names, see the highlight.js demo page.
+
+Inline `code` has `back-ticks around` it.
+Inline code has back-ticks around it.
+
+Blocks of code are either fenced by lines with three back-ticks, or are indented with four spaces. I recommend only using the fenced code blocks -- they're easier and only they support syntax highlighting.
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+
+```python
+s = "Python syntax highlighting"
+print s
+```
+
+```
+No language indicated, so no syntax highlighting.
+But let's throw in a <b>tag</b>.
+```
+
+## Tables
+
+Tables aren't part of the core Markdown spec, but they are part of GFM and Markdown Here supports them. They are an easy way of adding tables to your email -- a task that would otherwise require copy-pasting from another application.
+
+Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
+
+Markdown | Less      | Pretty
+---      | ---       | ---
+*Still*  | `renders` | **nicely**
+1        | 2         | 3
+
+Colons can be used to align columns.
+
+## Blockquotes
+
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
+
+Quote break.
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
+Quote break.
+
+## Inline HTML
+
+You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
+
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+
+## Horizontal Rule
+
+Three or more ...
+
+---
+***
+___
+
+
+## Line Breaks
+
+My basic recommendation for learning how line breaks work is to experiment and discover -- hit <Enter> once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You'll soon learn to get what you want. "Markdown Toggle" is your friend.
+
+Here are some things to try out:
+
+Here's a line for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
+
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
+Here's a line for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a separate paragraph.
+
+This line is also begins a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the same paragraph.
+
+(Technical note: Markdown Here uses GFM line breaks, so there's no need to use MD's two-space line breaks.)
+
+
+## Youtube videos
+
+They can't be added directly but you can add an image with a link to the video like this:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE" target="_blank">
+  <img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" />
+</a>
+
+Or, in pure Markdown, but losing the image sizing and border:
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE)

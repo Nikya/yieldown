@@ -6,6 +6,7 @@
 	<meta name="keywords" content="<?php echo $keywords ?>" />
 	<meta name="description" content="<?php echo $description ?>" />
 	<link href="style/main.css" rel="stylesheet">
+	<link href="style/github-markdown.css" rel="stylesheet">
 </head>
 
 <body>
