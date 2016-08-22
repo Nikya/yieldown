@@ -8,18 +8,23 @@
 */
 class Cache {
 
+	/** The cache engine state */
+	private static $enable = true;
+
 	/***************************************************************************
-	* Return the cached page if it available and clealy identify,
+	* Return the cached page if it available and clearly identify,
 	* then stop the script
 	*
 	*/
 	public static function shortcut() {
-		$cacheFileId = Cache::getCacheFileId();
+		if (SELF::$enable) {
+			$cacheFileId = Cache::getCacheFileId();
 
-		if ($cacheFileId != null) {
-		 	if (file_exists($cacheFileId)) {
-				readfile($cacheFileId);
-				exit;
+			if ($cacheFileId != null) {
+			 	if (file_exists($cacheFileId)) {
+					readfile($cacheFileId);
+					exit;
+				}
 			}
 		}
 	}
@@ -29,7 +34,8 @@ class Cache {
 	*
 	*/
 	public static function start() {
-		ob_start();
+		if (SELF::$enable)
+			ob_start();
 	}
 
 	/***************************************************************************
@@ -37,14 +43,16 @@ class Cache {
 	*
 	*/
 	public static function end() {
-		$pageContent = ob_get_contents(); // copie du contenu du tampon dans une chaîne
-		ob_end_clean(); // effacement du contenu du tampon et arrêt de son fonctionnement
+		if (SELF::$enable) {
+			$pageContent = ob_get_contents(); // copie du contenu du tampon dans une chaîne
+			ob_end_clean(); // effacement du contenu du tampon et arrêt de son fonctionnement
 
-		$cacheFileId = Cache::getCacheFileId();
+			$cacheFileId = Cache::getCacheFileId();
 
-		if ($cacheFileId != null) {
-			file_put_contents($cacheFileId, $pageContent) ; // on écrit la chaîne précédemment récupérée ($pageContent) dans un fichier ($cacheKey)
-			echo $pageContent ; // on affiche notre page :D
+			if ($cacheFileId != null) {
+				file_put_contents($cacheFileId, $pageContent) ; // on écrit la chaîne précédemment récupérée ($pageContent) dans un fichier ($cacheKey)
+				echo $pageContent ; // on affiche notre page :D
+			}
 		}
 	}
 
@@ -54,20 +62,35 @@ class Cache {
 	* @return the cache key, or null if is invalid status
 	*/
 	private static function getCacheFileId() {
-		global $view;
-		global $subview;
-		global $subsubview;
-		global $pre;
 		$key = null;
 
-		if($view!=null and $subview!=null and $pre!=null) {
-			$key = $view.$subview.$pre.$subsubview;
-			$key = str_replace('.php', '_', $key);
-			$key = str_replace('.phtml', '_', $key);
-			$key = str_replace('.htm', '_', $key);
-			$key = str_replace('.html', '_', $key);
+		if (SELF::$enable) {
+			global $view;
+			global $subview;
+			global $subsubview;
+			global $pre;
+
+			if($view!=null and $subview!=null and $pre!=null) {
+				$key = $view.$subview.$pre.$subsubview;
+				$key = str_replace('.php', '_', $key);
+				$key = str_replace('.phtml', '_', $key);
+				$key = str_replace('.htm', '_', $key);
+				$key = str_replace('.html', '_', $key);
+			}
+
+			$key = "cache/$key.html";
 		}
 
-		return "cache/$key.html";
+		return $key;
+	}
+
+	/** Toggle the cache status */
+	public static function enable($state = true) {
+		SELF::$enable = $state;
+	}
+
+	/** Toggle the cache status */
+	public static function disable($state = false) {
+		Cache::$enable = $state;
 	}
 }

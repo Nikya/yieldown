@@ -1,6 +1,6 @@
 <?php
 
-	// THE ONLY ONE ENTRY POINT
+	///// THE ONLY ONE ENTRY POINT \\\\\
 
 	ini_set('display_errors',1);
 	error_reporting(E_ALL);
@@ -8,9 +8,11 @@
 	require_once("yieldownEngine/Yieldown.php");
 	require_once("yieldownEngine/Cache.php");
 
-////////////////////////////////////////////////////////////////////////////////
-	// MANDATORY VARS
-	// To build page, to identify cached pages
+/*******************************************************************************
+* MANDATORY VARS
+* To build page, to identify cached pages
+*
+*/
 
 	/** Pre-processing : Scripting before building the page */
 	$pre = 'homePre.php';
@@ -33,8 +35,13 @@
 	/** Keywords : The HTML/Head keywords */
 	$keywords = "jeans, markdown, yieldown, demo";
 
-////////////////////////////////////////////////////////////////////////////////
-	// Altering mandatory vars
+	/** Caching : Enable or not the cache functionality */
+	$cacheEnable = true;
+
+/*******************************************************************************
+* Altering mandatory vars
+*
+*/
 
 	if (isset($_GET['p']) and !empty($_GET['p']) ) {
 		$p=$_GET['p'];
@@ -68,8 +75,11 @@
 		}
 	}
 
-////////////////////////////////////////////////////////////////////////////////
-	// Assembling the page
+/*******************************************************************************
+* Assembling the page
+*
+*/
+	Cache::enable($cacheEnable);
 
 	Cache::shortcut();
 	include('content/'.$pre);
