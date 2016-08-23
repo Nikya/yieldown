@@ -22,28 +22,33 @@
 	<h2>Actions</h2>
 	<form action="." method="post" enctype="multipart/form-data" >
 
-		<ul id="actions">
-			<li>
-				<a class="btn" href=".?action=help">Aide</a>
-				 : Consulter l'aide global de <em class="tdd">Yieldown</em>. Version en ligne <a href="https://github.com/Nikya/yieldown">Github de Yieldown</a>
-			 </li>
-			<li>
-				<Strong>Voir</strong>
-				 : Visualiser les fichiers dans leurs format <strong>brute</strong>, sans mise en forme. Utiliser les boutons <em>Voir</em> dans la <em class="tdd">table des données</em> ci-dessous.
-			 </li>
-			<li>
-				<Strong>Suppr.</strong>
-				 : Supprimer définitivement des fichiers. Utiliser les boutons <em>Suppr.</em> dans la <em class="tdd">table des données</em> ci-dessous.
-			 </li>
-			<li>
-				<input type="hidden" name="MAX_FILE_SIZE" value="41943040" /><input type="file" name="nFile" accept="image/x-png, image/gif, image/jpeg, .json, .md"/>.
-				Ajouter ou remplacer un fichier existant. Choisir un fichier puis utiliser les boutons <em>Ajouter à</em> dans la <em class="tdd">table des données</em> ci-dessous. (Attention au nom, taille et extension du fichier).
-			 </li>
-			<li>
-				<a class="btn" href=".?action=regen">Regénérer</a>
-				 : Appliquer au site les modifications de la <em class="tdd">table des données</em>. Supprime toute les pages du site, pour forcer leurs regénération avec les changements affectuées.
-			 </li>
-		</ul>
+		<dl id="actions">
+			<dt>Aide</dt>
+			<dd></dd>
+			<dd>Consulter l'aide global de <em class="kw">Yieldown</em> : <a class="btn" href=".?action=help">Aide</a></dd>
+			<dd>Version en ligne <a href="https://github.com/Nikya/yieldown">Github de Yieldown</a></dd>
+
+			<dt>Voir</dt>
+			<dd>Visualiser les fichiers dans leurs format <strong>brute</strong>, sans mise en forme. </dd>
+			<dd>Utiliser les boutons <em>Voir</em> dans la <em class="kw">table des données</em> ci-dessous.</dd>
+
+			<dt>Suppr.</dt>
+			<dd>Supprimer définitivement des fichiers.</dd>
+			<dd>Utiliser les boutons <em>Suppr.</em> dans la <em class="kw">table des données</em> ci-dessous.</dd>
+
+			<dt>Ajouter</dt>
+			<dd>Ajouter ou remplacer un fichier existant. </dd>
+			<dd>Choisir un fichier puis utiliser les boutons <em>Ajouter à</em> dans la <em class="kw">table des données</em> ci-dessous. </dd>
+			<dd>Attention au nom, taille et extension du fichier.</dd>
+			<dd><input type="hidden" name="MAX_FILE_SIZE" value="41943040" /><input type="file" name="nFile" accept="image/x-png, image/gif, image/jpeg, .json, .md"/>.</dd>
+
+			<dt>Regénérer</dt>
+			<dd>Appliquer au site les modifications de la <em class="kw">table des données</em>.  </dd>
+			<dd>Pour cela, supprime toute les pages du site, pour forcer leurs regénération avec les changements affectuées. </dd>
+			<dd><a class="btn" href=".?action=regen">Regénérer</a> </dd>
+			<dd>Effectue en plus une sauvegarde complète de la <em class="kw">table des données</em>. </dd>
+			<dd>Il existe actuellement <em class="kw">x<?php echo $backupCount ?></em> sauvegardes. Consulter le dossier <a href="../databackup">databackup</a>.</dd>
+		</dl>
 
 		<?php if (isset($helpMsg)) { echo <<<HELPBOX
 		<h2>Aide</h2>

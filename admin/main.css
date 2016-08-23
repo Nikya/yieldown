@@ -33,7 +33,7 @@ a {
 	color:lightblue;
 }
 
-em.tdd {
+em.kw {
 	color:#00cc99;
 }
 
@@ -104,15 +104,11 @@ em.tdd {
 }
 
 /*******************************************************************************
-* Actiosn and Buttons
+* Actions and Buttons
 */
 
 .action {
 	text-align: right;
-}
-
-ul#actions li {
-	margin-bottom: 15px;
 }
 
 .btn {
@@ -138,6 +134,12 @@ ul#actions li {
 
 .btn:active {
 	background-color: #FFF;
+}
+
+dl#actions dt {
+	font-weight: bold;
+	margin-top: 15px;
+	text-decoration: underline;
 }
 
 /*******************************************************************************

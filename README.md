@@ -26,6 +26,6 @@ A light website generator using PHP and Markdown.
 	* [x] Notification plus visuel
 	* [x] Data table avec explication
 	* [x] Backup des donnée à chaque régen.
-	* [ ] Backup warning and count
+	* [x] Backup warning and count
 	* [x] Affichage version
 * [ ] Rédiger la doc

@@ -4,7 +4,9 @@
 // Admin functions
 ////////////////////////////////////////////////////////////////////////////////
 
-	// To read a folder content
+	/***************************************************************************
+	* To read a folder content
+	*/
 	function getDirContents($dir){
 		$toHideFiles = array (
 			'.',
@@ -17,7 +19,9 @@
 		return array_diff($files, $toHideFiles);
 	}
 
-	// To see raw file
+	/***************************************************************************
+	* To see raw file
+	*/
 	function seeData($fileId){
 		global $msg;
 
@@ -33,7 +37,9 @@
 		exit;
 	}
 
-	// To see raw file
+	/***************************************************************************
+	* To see raw file
+	*/
 	function deleteData($fileId){
 		global $msg;
 
@@ -50,7 +56,9 @@
 			$msg = MSG_KO."Impossible de supprimer le fichier $fileId";
 	}
 
-	// To get the readme file as help text
+	/***************************************************************************
+	* To get the readme file as help text
+	*/
 	function getHelp() {
 		global $msg;
 
@@ -68,7 +76,9 @@
 		return $hTxt;
 	}
 
-	// To get the readme file as help text
+	/***************************************************************************
+	* To get the readme file as help text
+	*/
 	function regen() {
 		global $msg;
 		$fileCnt = 0;
@@ -91,7 +101,9 @@
 		}
 	}
 
-	// Save all data
+	/***************************************************************************
+	* Save all data
+	*/
 	function backup() {
 		global $msg;
 
@@ -106,7 +118,9 @@
 			$msg .= ' '.MSG_KO." Echec de la réalisation du backup de '$src' vers '$dst'";
 	}
 
-	// Copy a folder and his content
+	/***************************************************************************
+	* Copy a folder and his content
+	*/
 	function recurse_copy($src,$dst) {
 		$dir = opendir($src);
 
@@ -125,7 +139,9 @@
 		closedir($dir);
 	}
 
-	// To upload a new file
+	/***************************************************************************
+	* To upload a new file
+	*/
 	function uploadFile($destPath) {
 		global $msg;
 		$msg = null;
@@ -155,9 +171,25 @@
 		}
 	}
 
-	// Get Yieldown version
-	require_once('../yieldownEngine/Yieldown.php');
-	$yieldownVersion = Yieldown::VERSION;
+	/***************************************************************************
+	* Get Yieldown version
+	*/
+	function getYieldownVersion () {
+		require_once('../yieldownEngine/Yieldown.php');
+
+		return Yieldown::VERSION;
+	}
+
+	/***************************************************************************
+	* Get already existing Backup Count
+	*/
+	function getBackupCount () {
+		$dir = '../databackup';
+		$dirArray = scandir($dir);
+		$dirArray = array_diff ($dirArray, array('.', '..', '.htaccess'));
+
+		return count($dirArray);
+	}
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Read form
@@ -202,6 +234,10 @@
 				break;
 		}
 	}
+
+	// Others
+	$backupCount = getBackupCount();
+	$yieldownVersion = getYieldownVersion();
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Load data table
