@@ -25,7 +25,7 @@
 	</nav>
 
 	<section> <!-- CONTENT -->
-		<?php include("content/$subview"); ?>
+		<?php include("view/$subview"); ?>
 	</section>
 
 	<footer>

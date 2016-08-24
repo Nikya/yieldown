@@ -2,7 +2,9 @@
 
 Version 1.0
 
-A light website generator using PHP and Markdown.
+_Yieldown_ est un Framework légé de génération de site internet.
+
+
 
 ## Under construction ...
 
@@ -16,8 +18,8 @@ A light website generator using PHP and Markdown.
 * [x] Mise en cache
 * [x] Cache désactivable
 * [x] Protection par Htacces
-* [ ] Mod rewrite
-* [ ] Separation pre et vue
+* [x] Mod rewrite
+* [x] Separation pre et vue
 * [x] Partie admin
 	* [x] Download des fichiers
 	* [x] Supression des fichiers
@@ -29,4 +31,4 @@ A light website generator using PHP and Markdown.
 	* [x] Backup des donnée à chaque régen.
 	* [x] Backup warning and count
 	* [x] Affichage version
-* [ ] Rédiger la doc
+* [x] Rédiger la doc

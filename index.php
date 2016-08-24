@@ -10,12 +10,12 @@
 
 /*******************************************************************************
 * MANDATORY VARS
-* To build page, to identify cached pages
+* To build page or to identify cached pages
 *
 */
 
-	/** Pre-processing : Scripting before building the page */
-	$pre = 'homePre.php';
+	/** Pre-processing controler : Scripting before building the page */
+	$ctrl = 'homeCtrl.php';
 
 	/** View : The global page template */
 	$view = 'standardView.php';
@@ -36,7 +36,7 @@
 	$keywords = "jeans, markdown, yieldown, demo";
 
 	/** Caching : Enable or not the cache functionality */
-	$cacheEnable = true;
+	$cacheEnable = false;
 
 /*******************************************************************************
 * Altering mandatory vars
@@ -49,28 +49,28 @@
 		switch ($p) {
 			case 'blog':
 				$subview = null;
-				$pre = 'blogPre.php';
+				$ctrl = 'blogCtrl.php';
 				break;
 
 			case 'history':
 				$subview = 'historySubview.php';
-				$pre = 'historyPre.php';
+				$ctrl = 'historyCtrl.php';
 				break;
 
 			case 'tone':
 				$subview = 'toneSubview.php';
-				$pre = 'tonePre.php';
+				$ctrl = 'toneCtrl.php';
 				break;
 
 			case 'cut':
 				$subview = 'cutSubview.php';
-				$pre = 'cutPre.php';
+				$ctrl = 'cutCtrl.php';
 				break;
 
 			case 'error':
 			default:
 				$subview = 'errorSubview.php';
-				$pre = 'errorPre.php';
+				$ctrl = 'errorCtrl.php';
 				break;
 		}
 	}
@@ -81,12 +81,12 @@
 */
 	Cache::enable($cacheEnable);
 
-	Cache::shortcut();
-	include('content/'.$pre);
-	Cache::shortcut();
+	Cache::shortcut(); // Try to return the cached page if it clearly identify
+	require('controller/'.$ctrl);
+	Cache::shortcut(); // Try again to return the cached page if it clearly identify
 
-	Cache::start();
-	include('content/'.$view); // Using $subview, $title, $description, $keywords
-	Cache::end();
+	Cache::start(); // Start to generate a new cached page
+	require('view/'.$view); // Using $subview, $title, $description, $keywords
+	Cache::end(); // Save the cached page
 
 ?>

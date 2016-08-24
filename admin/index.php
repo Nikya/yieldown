@@ -7,7 +7,7 @@
 	define('MSG_OK', 'ok. ');
 	define('MSG_KO', 'ko. ');
 
-	include('adminPre.php');
+	require('adminCtrl.php');
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Format notification message
@@ -27,5 +27,5 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 	// Assembling the page
-	include('adminView.php');
+	require('adminView.php');
 ?>

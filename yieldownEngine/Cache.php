@@ -68,10 +68,10 @@ class Cache {
 			global $view;
 			global $subview;
 			global $subsubview;
-			global $pre;
+			global $ctrl;
 
-			if($view!=null and $subview!=null and $pre!=null) {
-				$key = $view.$subview.$pre.$subsubview;
+			if($view!=null and $subview!=null and $ctrl!=null) {
+				$key = $view.$subview.$ctrl.$subsubview;
 				$key = str_replace('.php', '_', $key);
 				$key = str_replace('.phtml', '_', $key);
 				$key = str_replace('.htm', '_', $key);
