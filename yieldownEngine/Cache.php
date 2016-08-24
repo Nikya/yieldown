@@ -19,7 +19,6 @@ class Cache {
 	public static function shortcut() {
 		if (SELF::$enable) {
 			$cacheFileId = Cache::getCacheFileId();
-
 			if ($cacheFileId != null) {
 			 	if (file_exists($cacheFileId)) {
 					readfile($cacheFileId);
@@ -35,7 +34,11 @@ class Cache {
 	*/
 	public static function start() {
 		if (SELF::$enable)
-			ob_start();
+			$cacheFileId = Cache::getCacheFileId();
+			if ($cacheFileId != null)
+				ob_start();
+			else
+				throw new Exception("Error : The cache ID is incomplete");
 	}
 
 	/***************************************************************************
@@ -52,6 +55,8 @@ class Cache {
 			if ($cacheFileId != null) {
 				file_put_contents($cacheFileId, $pageContent) ; // on écrit la chaîne précédemment récupérée ($pageContent) dans un fichier ($cacheKey)
 				echo $pageContent ; // on affiche notre page :D
+			} else {
+				throw new Exception("Error : The cache ID is incomplete");
 			}
 		}
 	}
@@ -78,7 +83,8 @@ class Cache {
 				$key = str_replace('.html', '_', $key);
 			}
 
-			$key = "cache/$key.html";
+			if ($key!=null)
+				$key = "cache/$key.html";
 		}
 
 		return $key;

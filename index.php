@@ -36,7 +36,7 @@
 	$keywords = "jeans, markdown, yieldown, demo";
 
 	/** Caching : Enable or not the cache functionality */
-	$cacheEnable = false;
+	$cacheEnable = true;
 
 /*******************************************************************************
 * Altering mandatory vars
@@ -81,9 +81,9 @@
 */
 	Cache::enable($cacheEnable);
 
-	Cache::shortcut(); // Try to return the cached page if it clearly identify
+	Cache::shortcut(); // Try to return the cached page if it clearly identify (view+subview+ctrl)
 	require('controller/'.$ctrl);
-	Cache::shortcut(); // Try again to return the cached page if it clearly identify
+	Cache::shortcut(); // Try again to return the cached page if it clearly identify (view+subview+ctrl)
 
 	Cache::start(); // Start to generate a new cached page
 	require('view/'.$view); // Using $subview, $title, $description, $keywords
