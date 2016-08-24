@@ -16,7 +16,7 @@
 	<p>
 		$article->intro
 		<br/>
-		<a href="?p=blog&a=$article->id">Lire la suite ...</a>
+		<a href="blog-$article->id">Lire la suite ...</a>
 	</p>
 </dd>
 </dl>

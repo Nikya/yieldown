@@ -17,6 +17,7 @@ A light website generator using PHP and Markdown.
 * [x] Cache désactivable
 * [x] Protection par Htacces
 * [ ] Mod rewrite
+* [ ] Separation pre et vue
 * [x] Partie admin
 	* [x] Download des fichiers
 	* [x] Supression des fichiers

@@ -18,10 +18,10 @@
 
 	<nav>
 		<a href=".">Accueil</a>
-		<a href="?p=blog">Blog</a>
-		<a href="?p=history">Historique</a>
-		<a href="?p=tone">Types de tons</a>
-		<a href="?p=cut">Types de coupes</a>
+		<a href="blog.html">Blog</a>
+		<a href="history.html">Historique</a>
+		<a href="tone.html">Types de tons</a>
+		<a href="cut.html">Types de coupes</a>
 	</nav>
 
 	<section> <!-- CONTENT -->
