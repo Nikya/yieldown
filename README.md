@@ -1,12 +1,14 @@
 # Yieldown
 
-Version 1.0
+## Générateur de site web avec PHP + Markdown + NoSql
 
-**Yieldown** est un framework PHP léger de génération de site web basé sur 2 concepts :
+#### Version 1.1
 
-* **La forme** : Il utilise la puissance de PHP pour construire la partie dynamique du site et ses fonctionnalités, sans trop imposer de contraintes, avec une implémentation type Vues-Contrôleurs
+##### _Yieldown_ est un framework PHP léger de génération de site web basé sur 2 concepts :
 
-* **Le fond** : Il permet de mettre à jours facilement le contenue du site grâce à sa partie administration et la rédaction de son contenue en _Markdown_, le tout sans aucun SQL
+* **_La forme_** : Il utilise la puissance de **PHP** pour construire la partie dynamique du site et ses fonctionnalités, sans imposer de limites, basé sur une implémentation type Vues-Contrôleurs.
+
+* **_Le fond_** : Il permet de mettre à jours facilement le contenue du site grâce à sa partie administration et la rédaction de son contenue en **_Markdown_**, le tout sans aucun SQL
 
 ## Installation
 ### Pré-requis
@@ -20,68 +22,95 @@ Serveur PHP-Apache avec :
 Cloner le [projet](https://github.com/Nikya/yieldown.git) dans un dossier _web_ du serveur.
 
 Pour des besoins de _génération/suppression_ de fichiers, donner suffisamment de droits au serveur dans les dossiers suivants :
-* cache
-* databackup
+* ``cache``
+* ``databackup``
 
 ### Tester
 
 Le projet est accompagné d'un site internet de démonstration _"L'histoire du jeans"_.  
-Une simple visite de l'URL où est accessible le site permet de le voir.
+Une simple visite de l'URL où est déployé le site permet de le voir pour comprendre la philosophie de _Yieldown_.
 
 ## A propos de Markdown
 
-Certains textes et contenues de _Yieldown_ peuvent être rédigés selon la syntaxe *Markdown*.
+Certains textes et contenues de _Yieldown_ peuvent être rédigés selon la syntaxe somple de *Markdown*.
 
 * Aide rapide sur la syntaxe :  [Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Markdown Cheatsheet by Adam Pritchard")
 * Explications générales : [Wikipedia](https://fr.wikipedia.org/wiki/Markdown "Aide sur Wikipédia")
 * Site officiel de l'auteur : [Daring Fireball](http://daringfireball.net/projects/markdown)
 
-## Découvrir le fond : Le gestionnaire de contenue
+## Découvrir _le fond_ : Le gestionnaire de contenue
 
 ### Stoker les donnnées
 
 Le moteur gére 3 type de contenue
 
-* **text** : Gérer des textes potentiellement mise en forme en Markdown
-* **Collection** : Un ensemble de données organisés au format Json
-* **blog** : Gérer un blog et ses articles. Voir la syntaxe d'un article dans `data/blog/_template.md`
+* **``text``** : Gérer des textes potentiellement mise en forme en Markdown
+* **``collection``** : Un ensemble de données organisés au format Json
+* **``blog``** : Gérer un blog et ses articles.
 
-Ces donnée sont à positionner dans le dossier `data`.  
-La partie administration permet de gérer ces contenues.
+Ces donnée sont à positionner dans le dossier `data` et leurs sous-dossier respectifs.  
+La partie administration permet de gérer ce contenue.
 
-### Chargment des données
-Coté PHP, ce contenue est à charger dans le site grâce au moteur de _Yieldown_.
+### Chargement des données
+Coté PHP, ce contenue est à charger dans les controleurs par un appel au moteur de _Yieldown_.
 
-#### Exemples
+#### Fonctions de lectures des données
 
-##### Charger un texte :
-Charge le contenue du fichier `data/text/home.md` et applique un formatage Markdown.  
-`$content` contient ensuite le texte mise en forme en HTML
+##### Charger un texte : ``loadText``
+Charge le contenue d'un fichier de _type texte,_.
+
+###### Paramètres
+* ``fileId`` : est l'identifiant du fichier (son nom sans extension), recherché uniquement dans le dossier `data/text/`. Extension de fichier implicite ``*.md``.
+* ``toFormat`` : Permet de demander ou non d'appliquer le formatage _Markdown_ sur le contenue lue.
+
+###### Retour
+Retourne une chaine de caratère contenant le contenue du fichier mise en forme ou non au format HTML.
+
+###### Exemple
+Charger et formater le texte de la page d'accueil.
 
 ```php
-	$content = Yieldown::loadText('home', true);
+	$homeText = Yieldown::loadText('home', true);
 ```
 
-##### Charger une collection de donnée
-Charge le contenue du fichier `data/collection/history.json` et applique un formatage Markdown sur les objets indexés par le clé `event`  
-`$history` contient ensuite un tableau d'objet représentant le contenue de la collection
+##### Charger une collection de donnée : ``loadCollection``
+Charge le contenue d'un fichier de type _Json object_.
+
+###### Paramètres
+* ``fileId`` : est l'identifiant du fichier (son nom sans extension), recherché uniquement dans le dossier `data/collection/`. Extension de fichier implicite ``*.json``.
+* ``keyToFormatList`` : Permet de demander ou non d'appliquer le formatage _Markdown_ sur certaines _clés_ de la collection lue.
+
+###### Retour
+Retourne un tableau d'objet contenant la collection lue avec certaines clés mise en forme ou non au format HTML.
+
+###### Exemple
+Charger la collection _historique_ et formate les clés _event_.
 
 ```php
 	$history = Yieldown::loadCollection('history',  array('event'));
 ```
 
-##### Charger le blog
-Charge tous les fichiers d'article de blog disponibles dans `data/blog`  
-`$blog` contient ensuite un tableau d'objet représentant un article de blog
+##### Charger le blog : ``loadBlog``
+Charge tout le contenue du blog dans son intégralité.
 
+###### Paramètres
+* Aucun :
+	* Charge tout les fichier _articles_ trouvés uniquement dans le dossier `data/blog/`. Extension de fichier implicite ``*.md``.
+	* Applique systématiquement le formatage _Markdown_ sur le corps des l'articles lues.
+	* La articles doivent être struturés selon une syntaxe suplémentaire. Voir la syntaxe d'un article dans le modèle auto-documenté : ``data/blog/_template.md``
+
+###### Retour
+Contient un tableau de tous les articles.
+
+###### Exemple
 ```php
 	$blog = Yieldown::loadBlog();
 ```
 
 #### Aside
-Le dossier `data/aside` sert à contenir des éléments de contenue supplémentaire comme des images.
+Le dossier `data/aside` contient des éléments suplémentaires comme des images, documents ou autre utilisés dans les textes ou articles.
 
-## Découvrir la forme : Le Framework
+## Découvrir _la forme_ : Le Framework
 
 ### Hiérarchie des fichiers
 
@@ -89,15 +118,15 @@ Le dossier `data/aside` sert à contenir des éléments de contenue supplémenta
 - **aspect** : Contient l'apparence du site : Images et CSS
 - **cache** : Contient les pages en cache du site lors de leurs génération
 - **controller** : Contient les contrôleurs : L'intelligence des pages
-- **data** : Contient les données le Fond du site
+- **data** : Contient les données : _le Fond_ du site
 - **databackup** : Contient des sauvegardes du dossier `data`
-- **index.php** : Unique point d'entré du site, c'est le contrôleur principale qui assemble le reste du site. (A consulter, ce fichier est auto documenté)
+- **index.php** : **Unique point d'entré** du site, c'est le _contrôleur principale_ qui assemble le reste du site. (A consulter, ce fichier est auto documenté)
 - **view** : Contient les vues : La mise en forme des pages
 - **yieldownEngine** : Contient le moteur du framework, aucune modification n'y est nécessaire.
 
-### Assemblage d'une page
+### Génération d'une page et mise en cache
 
-Voir le fichier [index.php](index.php)
+Voir le fichier auto-documenté [index.php](index.php)
 
 Chaque appel de page, dois définir :
 - Un contrôleur
@@ -125,7 +154,7 @@ Elle permet d'_ajouter/supprimer_ des fichiers dans le dossier `data`.
 Une fois les modifications effectuées, il suffit de vider le cache avec le bouton `Regénérer`.
 
 ### Login
-Cette page est à protéger par mot de passe, pour cela il faut :
+**Cette page est à protéger** par mot de passe, pour cela il faut :
 
 - Modifier le fichier `admin/.htaccess`
 	- Décommenter les lignes (supprimer les #)
@@ -138,5 +167,5 @@ Par défaut le login est `admin/admin`.
 
 ## Divers
 
-* Un CSS special Markdown est diponible pour un formatage pret à l'emploie en utilisant le fichier `aspect\github-markdown.css` et la classe CSS `markdown-body`
+* Un CSS special Markdown est diponible pour un formatage prêt à l'emploi en utilisant le fichier `aspect\github-markdown.css` et la classe CSS `markdown-body`
 * Les dossiers non public du site sont protégés par un fichier `.htacces = Deny from all`

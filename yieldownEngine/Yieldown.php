@@ -12,7 +12,7 @@ require_once('vendors/erusev/parsedown/Parsedown.php');
 class Yieldown {
 
 	/** Yieldown version name*/
-	const VERSION = "1.0";
+	const VERSION = "1.1";
 
 	/***************************************************************************
 	* Load a text from data/text folder (A plain text markdown file)

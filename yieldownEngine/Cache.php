@@ -33,12 +33,13 @@ class Cache {
 	*
 	*/
 	public static function start() {
-		if (SELF::$enable)
+		if (SELF::$enable) {
 			$cacheFileId = Cache::getCacheFileId();
 			if ($cacheFileId != null)
 				ob_start();
 			else
 				throw new Exception("Error : The cache ID is incomplete");
+		}
 	}
 
 	/***************************************************************************

@@ -36,7 +36,7 @@
 	$keywords = "jeans, markdown, yieldown, demo";
 
 	/** Caching : Enable or not the cache functionality */
-	$cacheEnable = true;
+	$cacheEnable = false;
 
 /*******************************************************************************
 * Altering mandatory vars
@@ -69,8 +69,10 @@
 
 			case 'error':
 			default:
+				$errMsg = "La page '$p' n'a pas était trouvée.";
 				$subview = 'errorSubview.php';
 				$ctrl = 'errorCtrl.php';
+				$cacheEnable = false;
 				break;
 		}
 	}
@@ -82,11 +84,21 @@
 	Cache::enable($cacheEnable);
 
 	Cache::shortcut(); // Try to return the cached page if it clearly identify (view+subview+ctrl)
-	require('controller/'.$ctrl);
+
+	try {
+		require('controller/standardCtrl.php');
+		require('controller/'.$ctrl);
+	} catch (Exception $e) {
+		$cacheEnable = false;
+		$errMsg = $e->getMessage();
+		$subview = 'errorSubview.php';
+		require('controller/errorCtrl.php');
+	}
+
 	Cache::shortcut(); // Try again to return the cached page if it clearly identify (view+subview+ctrl)
 
 	Cache::start(); // Start to generate a new cached page
 	require('view/'.$view); // Using $subview, $title, $description, $keywords
 	Cache::end(); // Save the cached page
-
+	
 ?>
