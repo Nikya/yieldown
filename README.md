@@ -10,40 +10,7 @@
 
 * **_Le fond_** : Il permet de mettre à jours facilement le contenue du site grâce à sa partie administration et la rédaction de son contenue en **_Markdown_**, le tout sans aucun SQL
 
-## Sommaire
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 -->
-
-- [Installation](#installation)
-	- [Pré-requis](#pr-requis)
-	- [Installer](#installer)
-	- [Tester](#tester)
-- [A propos de Markdown](#a-propos-de-markdown)
-- [Découvrir _le fond_ : Le gestionnaire de contenue](#dcouvrir-le-fond-le-gestionnaire-de-contenue)
-	- [Stoker les donnnées](#stoker-les-donnnes)
-	- [Chargement des données](#chargement-des-donnes)
-		- [Fonctions de lectures des données](#fonctions-de-lectures-des-donnes)
-			- [Charger un texte : ``loadText``](#charger-un-texte-loadtext)
-				- [Paramètres](#paramtres)
-				- [Retour](#retour)
-				- [Exemple](#exemple)
-			- [Charger une collection de donnée : ``loadCollection``](#charger-une-collection-de-donne-loadcollection)
-				- [Paramètres](#paramtres)
-				- [Retour](#retour)
-				- [Exemple](#exemple)
-			- [Charger le blog : ``loadBlog``](#charger-le-blog-loadblog)
-				- [Paramètres](#paramtres)
-				- [Retour](#retour)
-				- [Exemple](#exemple)
-		- [Aside](#aside)
-- [Découvrir _la forme_ : Le Framework](#dcouvrir-la-forme-le-framework)
-	- [Hiérarchie des fichiers](#hirarchie-des-fichiers)
-	- [Génération d'une page et mise en cache](#gnration-dune-page-et-mise-en-cache)
-- [Administration](#administration)
-	- [Login](#login)
-- [Divers](#divers)
-
-<!-- /TOC -->
-
+---
 
 ## Installation
 ### Pré-requis
